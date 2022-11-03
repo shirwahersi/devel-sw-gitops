@@ -1,0 +1,35 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: sw-gitops-repo
+spec:
+  interval: 1m
+  url: https://github.com/shirwahersi/sw-gitops.git
+  ref:
+    branch: main
+---
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: helloworld
+  namespace: flux-system
+spec:
+  approvePlan: auto
+  backendConfig:
+    customConfiguration: |
+      backend "s3" {
+        bucket                      = "shirwa-worktech-dev-tfstate"
+        key                         = "devel/vpc-stack-terraform.tfstate"
+        region                      = "eu-west-1"
+        skip_credentials_validation = true
+        skip_metadata_api_check     = true
+        force_path_style            = true
+        encrypt                     = true
+      }
+  interval: 1m
+  path: ./infrastructure/stacks/vpc/terraform
+  sourceRef:
+    kind: GitRepository
+    name: sw-gitops-repo
+    namespace: flux-system
