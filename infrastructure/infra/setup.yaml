@@ -16,7 +16,7 @@ metadata:
   name: vpc
   namespace: flux-system
 spec:
-  approvePlan: auto
+  approvePlan: "" # or you can omit this field
   backendConfig:
     customConfiguration: |
       backend "s3" {
@@ -29,7 +29,7 @@ spec:
         encrypt                     = true
       }
   interval: 1m
-  path: ./infrastructure/stacks/vpc/terraform
+  path: ./infrastructure/terraform/stacks/vpc
   sourceRef:
     kind: GitRepository
     name: sw-gitops-repo
