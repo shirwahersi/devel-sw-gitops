@@ -16,7 +16,7 @@ metadata:
   name: vpc
   namespace: flux-system
 spec:
-  approvePlan: "" # or you can omit this field
+  approvePlan: auto
   backendConfig:
     customConfiguration: |
       backend "s3" {
