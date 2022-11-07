@@ -29,6 +29,7 @@ spec:
         encrypt                     = true
       }
   interval: 1m
+  destroyResourcesOnDeletion: true
   path: ./infrastructure/terraform/stacks/vpc
   sourceRef:
     kind: GitRepository
@@ -54,6 +55,7 @@ spec:
         encrypt                     = true
       }
   interval: 1m
+  destroyResourcesOnDeletion: true
   path: ./infrastructure/terraform/stacks/server
   sourceRef:
     kind: GitRepository
