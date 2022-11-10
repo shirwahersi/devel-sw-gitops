@@ -20,7 +20,7 @@ spec:
   backendConfig:
     customConfiguration: |
       backend "s3" {
-        bucket                      = "shirwa-worktech-dev-tfstate"
+        bucket                      = "shirwa-shopworks-dev-tfstate"
         key                         = "devel/vpc-stack-terraform.tfstate"
         region                      = "eu-west-1"
         skip_credentials_validation = true
@@ -46,7 +46,7 @@ spec:
   backendConfig:
     customConfiguration: |
       backend "s3" {
-        bucket                      = "shirwa-worktech-dev-tfstate"
+        bucket                      = "shirwa-shopworks-dev-tfstate"
         key                         = "devel/server-stack-terraform.tfstate"
         region                      = "eu-west-1"
         skip_credentials_validation = true
